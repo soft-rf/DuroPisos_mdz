@@ -1,0 +1,5 @@
+Options +Includes
+AddType text/html .html
+AddOutputFilter INCLUDES .html
+
+# El servidor procesará los archivos .html en busca de inclusiones (SSI).

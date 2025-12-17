@@ -1,0 +1,1367 @@
+/* Fonts */
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Work Sans", sans-serif;
+}
+
+/* Colors */
+:root {
+  --color-default: #364d59; /* Este es el color principal de texto oscuro de la plantilla, puedes mantenerlo o ajustar si #003366 es muy oscuro */
+  --color-primary: #e60023; /* ¡Tu nuevo rojo principal! */
+  --color-secondary: #003366; /* Tu nuevo azul oscuro/secundario */
+  --color-light: #f5f6f7; /* Un color claro si lo necesitas para fondos suaves */
+  --color-white: #ffffff; /* Blanco, que ya está definido en el logo */
+}
+
+/* Smooth scroll behavior */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: var(--font-default);
+  color: var(--color-default);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffc732;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+.caption {
+  color: #bdbdbd; /* Azul */
+  font-size: 40px; /* Letra aún más grande */
+  font-weight: 900;
+}
+
+/*--------------------------------------------------------------
+# Sections & Section Header
+--------------------------------------------------------------*/
+section {
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f5f6f7;
+}
+
+.section-header {
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+  color: #2e3135;
+}
+
+.section-header h2:before,
+.section-header h2:after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: var(--color-primary);
+  display: inline-block;
+}
+
+.section-header h2:before {
+  margin: 0 15px 10px 0;
+}
+
+.section-header h2:after {
+  margin: 0 0 10px 15px;
+}
+
+.section-header p {
+  margin: 0 auto 0 auto;
+}
+
+@media (min-width: 1199px) {
+  .section-header p {
+    max-width: 60%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll top button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: var(--color-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--color-secondary);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background: #ffc732;
+  color: #fff;
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #fff;
+  border-color: var(--color-primary) transparent var(--color-primary)
+    transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1.5s linear infinite;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  z-index: 997;
+  position: absolute;
+  padding: 10px 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.header .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.header .logo h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0;
+  font-family: var(--font-primary);
+}
+
+.header .logo h1 span {
+  color: var(--color-primary);
+}
+
+/*--------------------------------------------------------------
+# Get Started Section
+--------------------------------------------------------------*/
+.get-started .content {
+  padding: 10px 0;
+}
+
+.get-started .content h3 {
+  font-size: 36px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.get-started .content h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  left: 0;
+  bottom: 0;
+}
+
+.get-started .content p {
+  font-size: 14px;
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Advantages Section (Nuestra Sección de Ventajas)
+--------------------------------------------------------------*/
+.advantages .advantage-item {
+  /* Mantén la mayoría de estos estilos, solo ajusta padding y margin-bottom si es necesario */
+  background: #fff;
+  padding: 10px; /* Reducimos el padding de 30px a 20px para hacer las tarjetas más compactas */
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 20px; /* Añade un margen inferior entre las tarjetas para espaciarlas si se apilan */
+}
+
+.advantages .advantage-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.12);
+}
+
+.advantages .advantage-item .icon {
+  /* Ajustamos el tamaño del círculo y su margen */
+  width: 60px; /* Reducimos el ancho del círculo de 80px a 60px */
+  height: 60px; /* Reducimos el alto del círculo de 80px a 60px */
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto; /* Reducimos el margen inferior de 25px a 15px */
+  transition: all 0.3s ease-in-out;
+}
+
+.advantages .advantage-item .icon i {
+  /* Ajustamos el tamaño del icono */
+  font-size: 28px; /* Reducimos el tamaño del icono de 36px a 28px */
+  color: var(--color-primary);
+  line-height: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.advantages .advantage-item:hover .icon {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.advantages .advantage-item:hover .icon i {
+  color: #fff;
+}
+
+.advantages .advantage-item h3 {
+  /* Ajustamos el tamaño del texto de la ventaja */
+  font-size: 18px; /* Reducimos el tamaño de la fuente de 20px a 18px */
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--color-secondary);
+  font-family: var(--font-primary);
+}
+
+/* Mantener o ajustar los estilos del encabezado de la sección */
+.advantages .section-header p {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.advantages .section-header h2 {
+  color: var(--color-default);
+  font-size: 34px; /* Ligeramente más pequeño */
+}
+
+/* Asegúrate de que las líneas decorativas del h2 de la plantilla se mantengan si te gustan */
+.advantages .section-header h2:before,
+.advantages .section-header h2:after {
+  background: var(--color-primary);
+}
+
+.advantages {
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .advantages .advantage-item {
+    padding: 15px; /* Un poco menos de padding en móviles */
+  }
+  .advantages .advantage-item .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  .advantages .advantage-item .icon i {
+    font-size: 24px;
+  }
+  .advantages .advantage-item h3 {
+    font-size: 16px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Our Projects Section
+--------------------------------------------------------------*/
+.projects .portfolio-flters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.projects .portfolio-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 10px;
+  line-height: 1;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.projects .portfolio-flters li:hover,
+.projects .portfolio-flters li.filter-active {
+  color: var(--color-primary);
+}
+
+.projects .portfolio-flters li:first-child {
+  margin-left: 0;
+}
+
+.projects .portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 575px) {
+  .projects .portfolio-flters li {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+
+.projects .portfolio-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.projects .portfolio-content img {
+  transition: 0.3s;
+}
+
+.projects .portfolio-content .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+}
+
+.projects .portfolio-content .portfolio-info h4 {
+  font-size: 14px;
+  padding: 5px 10px;
+  font-weight: 400;
+  color: #fff;
+  display: inline-block;
+  background-color: var(--color-primary);
+}
+
+.projects .portfolio-content .portfolio-info p {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.projects .portfolio-content .portfolio-info .preview-link,
+.projects .portfolio-content .portfolio-info .details-link {
+  position: absolute;
+  left: calc(50% - 40px);
+  font-size: 26px;
+  top: calc(50% - 14px);
+  color: #fff;
+  transition: 0.3s;
+  line-height: 1.2;
+}
+
+.projects .portfolio-content .portfolio-info .preview-link:hover,
+.projects .portfolio-content .portfolio-info .details-link:hover {
+  color: var(--color-primary);
+}
+
+.projects .portfolio-content .portfolio-info .details-link {
+  left: 50%;
+  font-size: 34px;
+  line-height: 0;
+}
+
+.projects .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+}
+
+.projects .portfolio-content:hover img {
+  transform: scale(1.1);
+}
+
+/*--------------------------------------------------------------
+# Projet Details Section
+--------------------------------------------------------------*/
+.project-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.project-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+.project-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+}
+
+.project-details .swiper-button-prev,
+.project-details .swiper-button-next {
+  width: 48px;
+  height: 48px;
+}
+
+.project-details .swiper-button-prev:after,
+.project-details .swiper-button-next:after {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.project-details .swiper-button-prev:hover:after,
+.project-details .swiper-button-next:hover:after {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 575px) {
+  .project-details .swiper-button-prev,
+  .project-details .swiper-button-next {
+    display: none;
+  }
+}
+
+.project-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.project-details .portfolio-info h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--color-primary);
+  left: 0;
+  bottom: 0;
+}
+
+.project-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.project-details .portfolio-info ul li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.project-details .portfolio-info ul strong {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #838893;
+  font-size: 14px;
+}
+
+.project-details .portfolio-info .btn-visit {
+  padding: 8px 40px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.project-details .portfolio-info .btn-visit:hover {
+  background: #ffc019;
+}
+
+.project-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-secondary);
+}
+
+.project-details .portfolio-description p {
+  padding: 0;
+}
+
+.project-details .portfolio-description .testimonial-item {
+  padding: 30px 30px 0 30px;
+  position: relative;
+  background: #f5f6f7;
+  height: 100%;
+  margin-bottom: 50px;
+}
+
+.project-details .portfolio-description .testimonial-item .testimonial-img {
+  width: 90px;
+  border-radius: 50px;
+  border: 6px solid #fff;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.project-details .portfolio-description .testimonial-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  padding-top: 20px;
+}
+
+.project-details .portfolio-description .testimonial-item h4 {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0;
+}
+
+.project-details .portfolio-description .testimonial-item .quote-icon-left,
+.project-details .portfolio-description .testimonial-item .quote-icon-right {
+  color: #ffd565;
+  font-size: 26px;
+  line-height: 0;
+}
+
+.project-details .portfolio-description .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.project-details .portfolio-description .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.project-details .portfolio-description .testimonial-item p {
+  font-style: italic;
+  margin: 0 0 15px 0 0 0;
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.hero .carousel {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 0;
+  margin: 0;
+  position: relative;
+}
+
+.hero .carousel-item {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  z-index: 1;
+  transition-duration: 0.4s;
+}
+
+.hero .carousel-item::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  inset: 0;
+}
+
+.hero .info {
+  position: absolute;
+  inset: 0; /* Esto hace que ocupe todo el espacio de su padre posicionado */
+  z-index: 2; /* Está debajo del header (997) */
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido dentro de .info */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  text-align: center; /* Asegura que el texto y los elementos internos se centren */
+  flex-direction: column; /* Apila el contenido (h2, p, buttons) verticalmente */
+
+  /* Solución para la superposición */
+  padding-top: 150px; /* VALOR CLAVE PARA DESKTOP. Ajusta este. */
+  padding-bottom: 50px; /* Padding inferior general */
+  padding-left: 20px; /* Padding lateral para que no se pegue en anchos intermedios */
+  padding-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero .info {
+    padding: 0 50px;
+  }
+}
+
+.hero .info h2 {
+  color: #fff;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  font-size: 56px;
+  font-weight: 700;
+  position: relative;
+}
+
+.hero .info h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--color-primary);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .hero .info h2 {
+    font-size: 36px;
+  }
+}
+
+.hero .info p {
+  color: rgb(255, 255, 255);
+  font-size: 19px;
+}
+
+.hero .info .btn-get-started {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding: 10px 45px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #ffffff;
+  border: 1px solid var(--color-light);
+}
+
+.hero .info .btn-get-started:hover {
+  background: var(--color-primary);
+}
+
+.hero .carousel-control-prev {
+  justify-content: start;
+}
+
+@media (min-width: 640px) {
+  .hero .carousel-control-prev {
+    padding-left: 15px;
+  }
+}
+
+.hero .carousel-control-next {
+  justify-content: end;
+}
+
+@media (min-width: 640px) {
+  .hero .carousel-control-next {
+    padding-right: 15px;
+  }
+}
+
+.hero .carousel-control-next-icon,
+.hero .carousel-control-prev-icon {
+  background: none;
+  font-size: 40px;
+  line-height: 0;
+  background: none;
+  color: rgb(255, 255, 255);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .carousel-control-prev,
+.hero .carousel-control-next {
+  z-index: 3;
+  transition: 0.3s;
+}
+
+.hero .carousel-control-prev:focus,
+.hero .carousel-control-next:focus {
+  opacity: 0.5;
+}
+
+.hero .carousel-control-prev:hover,
+.hero .carousel-control-next:hover {
+  opacity: 0.9;
+}
+
+/*--------------------------------------------------------------
+# Product Links in Get Started Section
+--------------------------------------------------------------*/
+.product-link {
+  color: var(
+    --color-default
+  ); /* Color de texto que la plantilla usa para el contenido */
+  text-decoration: underline; /* Subrayado por defecto */
+  font-weight: 600; /* Un poco más de negrita para que destaquen */
+  transition: color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.product-link:hover {
+  color: var(
+    --color-primary
+  ); /* Color primario de la plantilla al pasar el ratón */
+  text-decoration: none; /* Quita el subrayado al pasar el ratón si no lo quieres */
+}
+
+.product-link i {
+  font-size: 14px; /* Tamaño del icono */
+  margin-left: 5px; /* Espacio entre el texto y el icono */
+  vertical-align: middle; /* Alinea el icono con el texto */
+  transition: transform 0.3s ease; /* Pequeña transición para el icono */
+}
+
+.product-link:hover i {
+  transform: translateX(
+    3px
+  ); /* Pequeña animación para el icono al pasar el ratón */
+}
+
+/* Opcional: Ajustes para el texto dentro de las modales si los quieres más compactos */
+.modal-body ul {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-left: 20px; /* Indentación para las listas */
+}
+
+.modal-body ul li {
+  font-size: 15px; /* Ajusta el tamaño de la lista de detalles */
+  line-height: 1.6;
+}
+
+.modal-body p,
+.modal-body h6 {
+  font-size: 16px; /* Ajusta el tamaño del párrafo y subtítulos */
+}
+
+/* Ajuste para las imágenes del carrusel en modales */
+.carousel-item img {
+  height: auto; /* Asegura que la altura se ajuste automáticamente */
+  max-height: 450px; /* Altura máxima para las imágenes en el carrusel, ajusta según sea necesario */
+  object-fit: contain; /* Ajusta la imagen dentro de su contenedor sin recortarla */
+}
+
+/*--------------------------------------------------------------
+# Product Detail Modal (Modales de Productos Detallados)
+--------------------------------------------------------------*/
+.product-detail-modal {
+  padding: 30px; /* Espaciado interno de la modal */
+}
+
+.product-detail-modal .modal-section-title {
+  font-size: 16px; /* Tamaño del título de sección (DESCRIPCIÓN, VENTAJAS) */
+  font-weight: 700; /* Negrita */
+  color: var(--color-secondary); /* Color del texto (tu azul oscuro) */
+  text-transform: uppercase; /* Mayúsculas como en la imagen */
+  margin-top: 25px; /* Margen superior para separar secciones */
+  margin-bottom: 10px; /* Margen inferior antes del contenido */
+  padding-bottom: 5px; /* Pequeño padding inferior */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Línea divisoria sutil */
+}
+
+.product-detail-modal .modal-section-title:first-of-type {
+  margin-top: 0; /* Asegura que el primer título de sección no tenga margen superior */
+}
+
+.product-detail-modal p {
+  font-size: 15px; /* Tamaño del texto del párrafo */
+  line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+  color: var(--color-default); /* Color de texto general de la plantilla */
+  margin-bottom: 15px; /* Margen inferior del párrafo */
+}
+
+/* Estilos para las listas con iconos (Ventajas, Presentación) */
+.product-detail-modal .icon-list {
+  list-style: none; /* Elimina los bullet points por defecto */
+  padding: 0; /* Elimina el padding por defecto de la lista */
+  margin-bottom: 20px; /* Margen debajo de la lista */
+}
+
+.product-detail-modal .icon-list li {
+  font-size: 15px; /* Tamaño del texto de cada ítem de lista */
+  color: var(--color-default);
+  margin-bottom: 8px; /* Margen entre ítems de lista */
+  display: flex; /* Para alinear el icono y el texto */
+  align-items: flex-start; /* Alinea al inicio si el texto es largo */
+}
+
+.product-detail-modal .icon-list li i {
+  font-size: 18px; /* Tamaño del icono */
+  color: var(--color-primary); /* Color del icono (tu rojo/naranja) */
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+  line-height: 1; /* Alineación vertical del icono */
+  flex-shrink: 0; /* Evita que el icono se encoja en pantallas pequeñas */
+}
+
+/* Ajustes para el footer de la modal, si el botón de Mercado Libre está ahí */
+.modal-footer .btn-warning {
+  background-color: #ffc107; /* Color amarillo/naranja de Bootstrap warning */
+  border-color: #ffc107;
+  color: #212529; /* Texto oscuro para el botón de compra */
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.modal-footer .btn-warning:hover {
+  background-color: #e0a800; /* Tono más oscuro al hover */
+  border-color: #e0a800;
+}
+
+/*--------------------------------------------------------------
+# Product Detail Modal - Colors Grid
+--------------------------------------------------------------*/
+.product-detail-modal .colors-grid {
+  margin-top: 20px; /* Espacio superior para separar del párrafo anterior */
+  /* El `g-2` de Bootstrap ya maneja el espaciado, pero puedes ajustarlo */
+}
+
+.product-detail-modal .color-item {
+  margin-bottom: 10px; /* Espacio debajo de cada item de color, para cuando se apilan */
+}
+
+.product-detail-modal .color-swatch {
+  width: 100%; /* El swatch ocupa todo el ancho de su columna */
+  height: 60px; /* Altura fija para el rectángulo de color */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil para definir cada muestra */
+  border-radius: 4px; /* Ligeramente redondeado */
+  margin-bottom: 5px; /* Espacio entre el swatch y el texto */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
+  transition: transform 0.2s ease-in-out; /* Animación para el hover */
+}
+
+.product-detail-modal .color-swatch:hover {
+  transform: translateY(-2px); /* Pequeña elevación al pasar el ratón */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada al hover */
+}
+
+.product-detail-modal .color-code {
+  font-size: 13px; /* Tamaño de la fuente para el código del color */
+  font-weight: 600; /* Negrita */
+  color: var(--color-secondary); /* Color (tu azul oscuro) */
+  margin-bottom: 2px; /* Margen debajo del código */
+}
+
+.product-detail-modal .color-name {
+  font-size: 12px; /* Tamaño de la fuente para el nombre del color */
+  color: var(--color-default); /* Color de texto general */
+  margin-bottom: 0; /* Sin margen inferior */
+  line-height: 1.2; /* Ajuste para el texto */
+}
+
+.product-detail-modal .color-swatch-img {
+  width: 100%;
+  height: 60px; /* <-- Esta es la altura de tu recuadro de imagen */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 5px;
+  overflow: hidden; /* <-- ¡Asegúrate de que esta línea esté presente! */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.product-detail-modal .color-swatch-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* <-- ¡Asegúrate de que esta línea esté presente! */
+  display: block;
+}
+
+/* Media query para ajustar el tamaño de los colores en pantallas muy pequeñas */
+@media (max-width: 400px) {
+  .product-detail-modal .color-swatch {
+    height: 50px; /* Un poco más pequeños en móviles muy angostos */
+  }
+  .product-detail-modal .color-code {
+    font-size: 12px;
+  }
+  .product-detail-modal .color-name {
+    font-size: 11px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+  color: #fff;
+  background: url("../assets/img/footer.png") top center no-repeat;
+  background-size: cover;
+  font-size: 14px;
+  padding: 40px 0 60px 0;
+  position: relative;
+}
+
+.footer:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  inset: 0;
+}
+
+.footer .footer-content .footer-info {
+  margin-bottom: 30px;
+}
+
+.footer .footer-content .footer-info h3 {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.footer .footer-content .footer-info h3 span {
+  color: var(--color-primary);
+}
+
+.footer .footer-content .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: var(--font-primary);
+  color: #fff;
+}
+
+.footer .footer-content .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  line-height: 1;
+  margin-right: 8px;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+.footer .footer-content .social-links a:hover {
+  background: var(--color-primary);
+  text-decoration: none;
+}
+
+.footer .footer-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-content .footer-links {
+  margin-bottom: 30px;
+}
+
+.footer .footer-content .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-content .footer-links ul li {
+  padding: 8px 0;
+}
+
+.footer .footer-content .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-content .footer-links ul a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-content .footer-links ul a:hover {
+  color: #fff;
+}
+
+.footer .footer-legal .copyright {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer .footer-legal .credits {
+  padding-top: 4px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.footer .footer-legal .credits a {
+  color: var(--color-primary);
+}
+
+/*--------------------------------------------------------------
+# Footer Customizations for DURO PISOS
+--------------------------------------------------------------*/
+
+/* Estilos para la columna central de dirección y email */
+.footer .footer-contact-center {
+  /* Por defecto, Bootstrap alinea a la izquierda, así que forzamos el centrado */
+  text-align: center;
+  padding: 0 15px; /* Pequeño padding para que no se pegue a los bordes en móviles */
+  margin-bottom: 30px; /* Margen para cuando se apila en pantallas pequeñas */
+}
+
+.footer .footer-contact-center h4 {
+  /* Estilo para el título de la columna central */
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-contact-center p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: var(--font-primary);
+  color: #fff;
+}
+
+/* Estilo para los elementos de lista con iconos en la columna de CONTACTO */
+.footer .footer-content .footer-links ul li {
+  padding: 2px 0; /* Espaciado entre cada elemento de la lista */
+  display: flex; /* Usar flexbox para alinear el icono y el texto */
+  align-items: center; /* Centrar verticalmente icono y texto */
+}
+
+.footer .footer-content .footer-links ul li a {
+  display: flex; /* También flexbox para el enlace interno */
+  align-items: center; /* Centrar verticalmente contenido del enlace */
+  color: rgba(255, 255, 255, 0.6); /* Color del texto del enlace */
+  transition: 0.3s;
+  line-height: 1.2; /* Ajuste para que el icono y texto se vean bien */
+}
+
+.footer .footer-content .footer-links ul li a:hover {
+  color: #fff; /* Color del texto al pasar el ratón */
+}
+
+.footer .footer-content .footer-links ul li a i {
+  font-size: 18px; /* Tamaño de los iconos (ajusta si quieres más grande o más pequeño) */
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+  line-height: 1; /* Ajuste de línea para el icono */
+  color: var(--color-primary); /* Color del icono */
+  transition: 0.3s; /* Transición suave para el color del icono */
+}
+
+.footer .footer-content .footer-links ul li a:hover i {
+  color: #fff; /* Color del icono al pasar el ratón */
+}
+
+/*--------------------------------------------------------------
+# Footer Interactive Elements (AJUSTES FINOS DE DISEÑO)
+--------------------------------------------------------------*/
+
+/* Estilos para el contenedor de cada ítem de contacto */
+.footer .footer-links ul li .contact-item {
+  width: 100%;
+  /* Eliminar o reducir el margen-bottom si lo agregamos antes para que los items no estén tan separados */
+  margin-bottom: 0px; /* Asegura que no haya margen inferior entre items */
+  padding-bottom: 5px; /* Opcional: Pequeño padding si quieres un separador visual invisible */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Opcional: Un separador sutil entre elementos */
+}
+
+/* Reducimos el padding de los li si es que lo tenían */
+.footer .footer-links ul li {
+  padding: 5px 0; /* Ajustar este padding para controlar el espaciado vertical entre Email, WhatsApp, Instagram */
+}
+
+/* Estilos para el grupo de iconos de acción (Copiar/Abrir) */
+.footer .footer-links .action-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Reducimos el espacio entre los iconos de acción (de 8px a 5px) */
+}
+
+/* Estilos para los iconos individuales de Copiar/Abrir (CLAVE: ELIMINAR CUADRO TRANSPARENTE) */
+.footer .footer-links .copy-button,
+.footer .footer-links .action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; /* Reducimos el tamaño clickeable (de 32px a 28px) */
+  height: 28px;
+  border-radius: 50%; /* Hacemos que sea circular al pasar el ratón para un efecto más suave, no cuadrado */
+  /* ELIMINAR ESTAS LÍNEAS para quitar el recuadro transparente */
+  background-color: transparent; /* Fondo transparente por defecto */
+  border: none; /* Sin borde por defecto */
+  /* Mantenemos el color del icono */
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.footer .footer-links .copy-button i,
+.footer .footer-links .action-icon i {
+  font-size: 16px; /* Mantenemos el tamaño del icono, o ajustamos si es necesario */
+  line-height: 1;
+  margin: 0;
+  color: inherit;
+}
+
+/* Hover effects for action icons (adaptados al nuevo estilo) */
+.footer .footer-links .copy-button:hover,
+.footer .footer-links .action-icon:hover {
+  /* Al pasar el ratón, solo cambiamos el color y quizás una pequeña transformación */
+  color: var(--color-primary); /* Color de tu marca al pasar el ratón */
+  background-color: transparent; /* Aseguramos que siga siendo transparente */
+  border: none; /* Aseguramos que siga sin borde */
+  transform: scale(
+    1.1
+  ); /* Un pequeño zoom o elevación para indicar interactividad */
+  /* Puedes probar también un 'transform: translateY(-2px);' si te gusta el efecto de elevación */
+}
+
+/* Ajuste para el icono del mapa si lo tienes (mantener consistencia si quieres) */
+.footer .footer-contact-center .external-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; /* Ajusta el tamaño para que coincida con los otros iconos de acción */
+  height: 28px;
+  border-radius: 50%; /* Circular en hover */
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.footer .footer-contact-center .map-container {
+  background: #000;
+  border-radius: 20px; /* <--- MODIFICA ESTA LÍNEA (o aumenta el valor) */
+  overflow: hidden; /* Muy importante para que el contenido del iframe se redondee también */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer .footer-contact-center .map-container iframe {
+  display: block;
+  border-radius: inherit; /* Hereda el border-radius de su padre */
+}
+
+.footer .footer-contact-center .external-link-icon:hover {
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.footer .footer-contact-center .external-link-icon i {
+  font-size: 16px;
+  line-height: 1;
+  margin: 0;
+  color: inherit;
+}
+/*--------------------------------------------------------------
+# WhatsApp Floating Button
+--------------------------------------------------------------*/
+.whatsapp-float {
+  position: fixed; /* Lo fija en la pantalla, no se desplaza con el scroll */
+  bottom: 20px; /* 20px desde el borde inferior */
+  left: 20px; /* 20px desde el borde izquierdo */
+  background-color: #25d366; /* Color de WhatsApp */
+  color: white; /* Color del icono */
+  border-radius: 50%; /* Lo hace circular */
+  width: 60px; /* Ancho del círculo */
+  height: 60px; /* Alto del círculo */
+  display: flex; /* Para centrar el icono */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+  font-size: 32px; /* Tamaño del icono de WhatsApp */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para que se vea flotante */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transición suave para el hover */
+}
+
+.whatsapp-float:hover {
+  background-color: #1da851; /* Un tono más oscuro al pasar el ratón */
+  transform: scale(1.1); /* Efecto de "zoom" al pasar el ratón */
+  color: white; /* Asegura que el icono permanezca blanco */
+}
+
+/* Opcional: Para pantallas muy pequeñas, puedes ajustar el tamaño si es necesario */
+@media (max-width: 576px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+/* FORZAR VISIBILIDAD DE MODALES PROBLEMÁTICAS PARA DEBUG */
+#selladoresProductModal.modal.fade,
+#faqModal.modal.fade {
+  opacity: 1 !important; /* Fuerza la opacidad a 1 */
+  visibility: visible !important; /* Fuerza la visibilidad */
+}
+
+/* Opcional: Si quieres que aparezcan sin la animación de fundido si el fade da problemas */
+#selladoresProductModal.modal.fade,
+#faqModal.modal.fade {
+  transition: none !important; /* Deshabilita la transición de fundido */
+}
+
+/*--------------------------------------------------------------
+# FORCE MODAL VISIBILITY (Debugging Fix for Selladores & FAQ)
+--------------------------------------------------------------*/
+/* Esta regla fuerza que las modales problemáticas sean visibles */
+/* Debería sobrescribir cualquier 'opacity: 0;' o 'visibility: hidden;' */
+#selladoresProductModal.modal,
+#faqModal.modal {
+  opacity: 1 !important; /* Fuerza la opacidad a 1, haciéndola visible */
+  visibility: visible !important; /* Fuerza la visibilidad (por si hay un 'visibility: hidden') */
+}
+
+/* Opcional: Si la animación de fade aún causa problemas, puedes deshabilitarla */
+#selladoresProductModal.modal.fade,
+#faqModal.modal.fade {
+  transition: none !important; /* Deshabilita cualquier transición de opacidad/visibilidad */
+}
+
+/* Asegurar que el contenido de la modal también sea visible si el problema fuera interno */
+#selladoresProductModal.modal .modal-dialog,
+#faqModal.modal .modal-dialog {
+  opacity: 1 !important;
+  transform: none !important; /* Asegura que no haya transformaciones que las muevan fuera de vista */
+}
