@@ -1,14 +1,17 @@
-import { defineConfig } from 'vite';
-import ssi from 'vite-plugin-ssi';
+import { defineConfig } from "vite";
+import ssi from "vite-plugin-ssi";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: 'src',
-  plugins: [ssi({
-    remoteBasePath: ''
-  })],
+  root: "src",
+  publicDir: "../public",
+  plugins: [
+    ssi({
+      remoteBasePath: "",
+    }),
+  ],
   build: {
-    outDir: '../dist',
+    outDir: "../dist",
     emptyOutDir: true,
   },
 });
