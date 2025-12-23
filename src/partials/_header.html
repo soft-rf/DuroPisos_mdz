@@ -1,7 +1,39 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "DURO PISOS SRL",
+      "image": "https://www.duropisosmendoza.com.ar/assets/img/LOGO.png",
+      "@id": "https://www.duropisosmendoza.com.ar/",
+      "url": "https://www.duropisosmendoza.com.ar/",
+      "telephone": "+542615163895",
+      "email": "ventas@duropisos.com.ar",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Bandera de los Andes 7668",
+        "addressLocality": "Guaymallén",
+        "addressRegion": "Mendoza",
+        "postalCode": "M5523",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -32.9263,
+        "longitude": -68.7344
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": []
+    }
+  </script>
   <div
-    class="container-fluid container-xl d-flex align-items-center justify-content-start"
+    class="container-fluid container-xl d-flex align-items-center justify-content-between"
   >
     <a href="index.html" class="logo d-flex align-items-center">
       <img
@@ -10,6 +42,29 @@
         style="height: 30px"
       />
     </a>
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#"
+            ><span>Productos</span>
+            <i class="bi bi-chevron-down dropdown-indicator"></i
+          ></a>
+          <ul>
+            <li><a href="duro-crete.html">DURO CRETE - Endurecedores</a></li>
+            <li><a href="duro-fix.html">DURO FIX - Microcemento</a></li>
+            <li><a href="revoque-color.html">Revoque Color</a></li>
+            <li><a href="selladores.html">Selladores y Lacas</a></li>
+          </ul>
+        </li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+        <li><a href="#footer">Contacto</a></li>
+      </ul>
+    </nav>
+    <!-- .navbar -->
   </div>
 </header>
 <!-- End Header -->
