@@ -22,20 +22,22 @@ import Isotope from "isotope-layout";
 import Swiper from "swiper"; // Importamos Swiper para poder usarlo si es necesario
 import PureCounter from "@srexi/purecounterjs";
 
-document.addEventListener("DOMContentLoaded", () => {
-  "use strict";
+"use strict";
 
-  /**
-   * Preloader
-   */
+/**
+ * Preloader
+ */
+export function initPreloader() {
   const preloader = document.querySelector("#preloader");
   if (preloader) {
     preloader.remove(); // Remove preloader immediately as main.js is loaded after partials
   }
+}
 
-  /**
-   * Scroll top button
-   */
+/**
+ * Scroll top button
+ */
+export function initScrollTop() {
   const scrollTop = document.querySelector(".scroll-top");
   const togglescrollTop = function () {
     window.scrollY > 100
@@ -55,32 +57,40 @@ document.addEventListener("DOMContentLoaded", () => {
     // Call it once on DOMContentLoaded to set initial state
     togglescrollTop();
   }
+}
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
+/**
+ * Initiate glightbox
+ */
+export function initGlightbox() {
+  GLightbox({
     selector: ".glightbox",
   });
+}
 
-  /**
-   * Animation on scroll function and init
-   */
+/**
+ * Animation on scroll function and init
+ */
+export function initAOS() {
   AOS.init({
     duration: 800,
     easing: "slide",
     once: true,
     mirror: false,
   });
+}
 
-  /**
-   * Initiate PureCounter
-   */
+/**
+ * Initiate PureCounter
+ */
+export function initPureCounter() {
   new PureCounter();
+}
 
-  /**
-   * Function to handle copy to clipboard functionality
-   */
+/**
+ * Function to handle copy to clipboard functionality
+ */
+export function initCopyButtons() {
   const copyButtons = document.querySelectorAll(".copy-button");
 
   copyButtons.forEach((button) => {
@@ -116,15 +126,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+}
 
-  /*
-   * =================================================================================
-   * PROJECTS SECTION - ISOTOPE PORTFOLIO FILTER
-   * Description: This code initializes the Isotope library to handle the filtering
-   * and layout of the project gallery.
-   * =================================================================================
-   */
+/*
+ * =================================================================================
+ * PROJECTS SECTION - ISOTOPE PORTFOLIO FILTER
+ * Description: This code initializes the Isotope library to handle the filtering
+ * and layout of the project gallery.
+ * =================================================================================
+ */
 
+export function initIsotope() {
   let portfolioContainer = document.querySelector(".portfolio-container");
 
   if (portfolioContainer) {
@@ -137,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let portfolioFilters = document.querySelectorAll(".portfolio-flters li");
 
     portfolioFilters.forEach(function (filterEl) {
-      filterEl.addEventListener("click", function (e) {
+      filterEl.addEventListener('click', function(e) {
         e.preventDefault();
 
         portfolioFilters.forEach(function (el) {
@@ -152,4 +164,90 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-});
+}
+
+// --- START OF NAVBAR LOGIC ---
+export function initMobileNavbar() {
+    /**
+     * Mobile nav toggle
+     */
+    const mobileNavShow = document.querySelector('.mobile-nav-show');
+    const mobileNavHide = document.querySelector('.mobile-nav-hide');
+
+    if (mobileNavShow && mobileNavHide) {
+        document.querySelectorAll('.mobile-nav-toggle').forEach(el => {
+            el.addEventListener('click', function(event) {
+                event.preventDefault();
+                mobileNavToggle();
+            });
+        });
+    }
+
+    function mobileNavToggle() {
+        document.body.classList.toggle('mobile-nav-active');
+        mobileNavShow.classList.toggle('d-none');
+        mobileNavHide.classList.toggle('d-none');
+    }
+
+    /**
+     * Hide mobile nav on same-page/hash links
+     */
+    document.querySelectorAll('#navbar a').forEach(navbarlink => {
+        if (!navbarlink.hash) return;
+        let section = document.querySelector(navbarlink.hash);
+        if (!section) return;
+        navbarlink.addEventListener('click', () => {
+            if (document.body.classList.contains('mobile-nav-active')) {
+                mobileNavToggle();
+            }
+        });
+    });
+
+    /**
+     * Toggle dropdowns in mobile nav
+     */
+    const navDropdowns = document.querySelectorAll('.navbar .dropdown > a');
+    navDropdowns.forEach(el => {
+        el.addEventListener('click', function(event) {
+            if (document.body.classList.contains('mobile-nav-active')) {
+                event.preventDefault();
+                this.classList.toggle('active');
+                this.nextElementSibling.classList.toggle('dropdown-active');
+                let dropDownIndicator = this.querySelector('.dropdown-indicator');
+                dropDownIndicator.classList.toggle('bi-chevron-up');
+                dropDownIndicator.classList.toggle('bi-chevron-down');
+            }
+        });
+    });
+
+    /**
+     * Header state handling
+     */
+    const header = document.querySelector('#header');
+    if (header) {
+        // Function to handle the scrolled state
+        const handleHeaderScroll = () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        };
+
+        // Check if it's a subpage on load
+        window.addEventListener('load', () => {
+            if (!document.querySelector('.hero')) {
+                document.body.classList.add('is-subpage');
+                document.body.classList.add('subpage-nav-dark'); // Add this line
+                header.classList.add('header-scrolled'); // Force scrolled state on subpages
+            }
+            
+            // Initial check for scroll state
+            handleHeaderScroll();
+        });
+
+        // Listen for scroll events
+        document.addEventListener('scroll', handleHeaderScroll);
+    }
+}
+// --- END OF NAVBAR LOGIC ---

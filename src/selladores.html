@@ -123,18 +123,33 @@
     </a>
 
     <script src="/js/include_partials.js"></script>
-    <script>
+
+    <script type="module">
+      import * as mainModule from "./js/main.js";
+
       document.addEventListener("DOMContentLoaded", async () => {
         try {
-          await Promise.all([
-            loadPartial("/partials/_header.html", "header-placeholder"),
-            loadPartial("/partials/_footer.html", "footer-placeholder"),
-          ]);
+          console.log('DOM Content Loaded, module script is running.');
+
+          // Load header and footer partials
+          await loadPartial('/partials/_header.html', 'header-placeholder');
+          await loadPartial('/partials/_footer.html', 'footer-placeholder');
+
+          // Initialize main.js functions after partials are loaded
+          mainModule.initPreloader();
+          mainModule.initScrollTop();
+          mainModule.initGlightbox();
+          mainModule.initAOS();
+          mainModule.initPureCounter();
+          mainModule.initCopyButtons();
+          mainModule.initIsotope();
+          mainModule.initMobileNavbar();
+
         } catch (error) {
-          displayCriticalError(`Initialization error: ${error.message}`);
+          console.error('Error in module script:', error);
+          // Potentially display a user-friendly error message
         }
       });
     </script>
-    <script type="module" src="/js/main.js"></script>
   </body>
 </html>
