@@ -67,23 +67,23 @@
     <!-- .navbar -->
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const header = document.getElementById("header");
+    // Ejecutar inmediatamente para evitar el "flicker" o parpadeo de estilos
+    (function () {
       const isIndex =
         window.location.pathname === "/" ||
         window.location.pathname.endsWith("index.html");
 
       if (!isIndex) {
-        // En otras páginas: Fondo azul y espacio para no superponer
-        header.classList.add("header-scrolled");
-        document.body.style.paddingTop = "85px"; // Ajusta este valor si el header es más alto o bajo
-      } else {
-        // En Index: Fondo transparente
-        header.style.background = "transparent";
-        // Asegurar que se mantenga transparente al hacer scroll
-        header.classList.remove("header-scrolled");
+        document.body.classList.add("subpage-nav-dark");
       }
-    });
+      document.body.style.paddingTop = "100px"; // Aumentado a 100px para evitar que el header tape el contenido
+
+      const header = document.getElementById("header");
+      if (header) {
+        header.classList.add("header-scrolled");
+        header.style.background = "";
+      }
+    })();
   </script>
 </header>
 <!-- End Header -->

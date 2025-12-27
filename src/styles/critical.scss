@@ -1,0 +1,13 @@
+/* 
+  CRITICAL CSS
+  Estilos necesarios para la carga inicial (Above the fold)
+  para evitar FOUC (Flash of Unstyled Content).
+*/
+
+@use "abstracts/variables";
+@use "base/reset";
+
+@use "components/preloader";
+
+@use "layout/header";
+@use "layout/hero";

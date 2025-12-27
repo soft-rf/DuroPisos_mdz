@@ -11,8 +11,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-// Importar tu hoja de estilos principal (¡importante que vaya al final para que pueda sobreescribir!)
-import "../styles/main.css";
+// Importar tus hojas de estilos SASS. Vite las compilará automáticamente.
+import "../styles/critical.scss";
+import "../styles/main.scss";
 
 // --- 2. IMPORTACIONES DE LIBRERÍAS (JS) ---
 import "bootstrap"; // Importa el JS de Bootstrap
@@ -22,7 +23,35 @@ import Isotope from "isotope-layout";
 import Swiper from "swiper"; // Importamos Swiper para poder usarlo si es necesario
 import PureCounter from "@srexi/purecounterjs";
 
-"use strict";
+("use strict");
+
+/**
+ * Loads HTML partials and injects them into specified placeholder elements.
+ */
+export async function loadPartials() {
+  async function fetchHtmlAndInject(url, targetId) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const html = await response.text();
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.innerHTML = html;
+      } else {
+        console.error(`Target element with ID "${targetId}" not found.`);
+      }
+    } catch (error) {
+      console.error(`Error loading partial from ${url}:`, error);
+    }
+  }
+
+  // Load header
+  await fetchHtmlAndInject("partials/_header.html", "header-placeholder");
+  // Load footer
+  await fetchHtmlAndInject("partials/_footer.html", "footer-placeholder");
+}
 
 /**
  * Preloader
@@ -149,7 +178,7 @@ export function initIsotope() {
     let portfolioFilters = document.querySelectorAll(".portfolio-flters li");
 
     portfolioFilters.forEach(function (filterEl) {
-      filterEl.addEventListener('click', function(e) {
+      filterEl.addEventListener("click", function (e) {
         e.preventDefault();
 
         portfolioFilters.forEach(function (el) {
@@ -168,86 +197,86 @@ export function initIsotope() {
 
 // --- START OF NAVBAR LOGIC ---
 export function initMobileNavbar() {
-    /**
-     * Mobile nav toggle
-     */
-    const mobileNavShow = document.querySelector('.mobile-nav-show');
-    const mobileNavHide = document.querySelector('.mobile-nav-hide');
+  /**
+   * Mobile nav toggle
+   */
+  const mobileNavShow = document.querySelector(".mobile-nav-show");
+  const mobileNavHide = document.querySelector(".mobile-nav-hide");
 
-    if (mobileNavShow && mobileNavHide) {
-        document.querySelectorAll('.mobile-nav-toggle').forEach(el => {
-            el.addEventListener('click', function(event) {
-                event.preventDefault();
-                mobileNavToggle();
-            });
-        });
-    }
+  if (mobileNavShow && mobileNavHide) {
+    document.querySelectorAll(".mobile-nav-toggle").forEach((el) => {
+      el.addEventListener("click", function (event) {
+        event.preventDefault();
+        mobileNavToggle();
+      });
+    });
+  }
 
-    function mobileNavToggle() {
-        document.body.classList.toggle('mobile-nav-active');
-        mobileNavShow.classList.toggle('d-none');
-        mobileNavHide.classList.toggle('d-none');
-    }
+  function mobileNavToggle() {
+    document.body.classList.toggle("mobile-nav-active");
+    mobileNavShow.classList.toggle("d-none");
+    mobileNavHide.classList.toggle("d-none");
+  }
 
-    /**
-     * Hide mobile nav on same-page/hash links
-     */
-    document.querySelectorAll('#navbar a').forEach(navbarlink => {
-        if (!navbarlink.hash) return;
-        let section = document.querySelector(navbarlink.hash);
-        if (!section) return;
-        navbarlink.addEventListener('click', () => {
-            if (document.body.classList.contains('mobile-nav-active')) {
-                mobileNavToggle();
-            }
-        });
+  /**
+   * Hide mobile nav on same-page/hash links
+   */
+  document.querySelectorAll("#navbar a").forEach((navbarlink) => {
+    if (!navbarlink.hash) return;
+    let section = document.querySelector(navbarlink.hash);
+    if (!section) return;
+    navbarlink.addEventListener("click", () => {
+      if (document.body.classList.contains("mobile-nav-active")) {
+        mobileNavToggle();
+      }
+    });
+  });
+
+  /**
+   * Toggle dropdowns in mobile nav
+   */
+  const navDropdowns = document.querySelectorAll(".navbar .dropdown > a");
+  navDropdowns.forEach((el) => {
+    el.addEventListener("click", function (event) {
+      if (document.body.classList.contains("mobile-nav-active")) {
+        event.preventDefault();
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("dropdown-active");
+        let dropDownIndicator = this.querySelector(".dropdown-indicator");
+        dropDownIndicator.classList.toggle("bi-chevron-up");
+        dropDownIndicator.classList.toggle("bi-chevron-down");
+      }
+    });
+  });
+
+  /**
+   * Header state handling
+   */
+  const header = document.querySelector("#header");
+  if (header) {
+    // Function to handle the scrolled state
+    const handleHeaderScroll = () => {
+      if (window.scrollY > 100) {
+        header.classList.add("header-scrolled");
+      } else {
+        header.classList.remove("header-scrolled");
+      }
+    };
+
+    // Check if it's a subpage on load
+    window.addEventListener("load", () => {
+      if (!document.querySelector(".hero")) {
+        document.body.classList.add("is-subpage");
+        document.body.classList.add("subpage-nav-dark"); // Add this line
+        header.classList.add("header-scrolled"); // Force scrolled state on subpages
+      }
+
+      // Initial check for scroll state
+      handleHeaderScroll();
     });
 
-    /**
-     * Toggle dropdowns in mobile nav
-     */
-    const navDropdowns = document.querySelectorAll('.navbar .dropdown > a');
-    navDropdowns.forEach(el => {
-        el.addEventListener('click', function(event) {
-            if (document.body.classList.contains('mobile-nav-active')) {
-                event.preventDefault();
-                this.classList.toggle('active');
-                this.nextElementSibling.classList.toggle('dropdown-active');
-                let dropDownIndicator = this.querySelector('.dropdown-indicator');
-                dropDownIndicator.classList.toggle('bi-chevron-up');
-                dropDownIndicator.classList.toggle('bi-chevron-down');
-            }
-        });
-    });
-
-    /**
-     * Header state handling
-     */
-    const header = document.querySelector('#header');
-    if (header) {
-        // Function to handle the scrolled state
-        const handleHeaderScroll = () => {
-            if (window.scrollY > 100) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        };
-
-        // Check if it's a subpage on load
-        window.addEventListener('load', () => {
-            if (!document.querySelector('.hero')) {
-                document.body.classList.add('is-subpage');
-                document.body.classList.add('subpage-nav-dark'); // Add this line
-                header.classList.add('header-scrolled'); // Force scrolled state on subpages
-            }
-            
-            // Initial check for scroll state
-            handleHeaderScroll();
-        });
-
-        // Listen for scroll events
-        document.addEventListener('scroll', handleHeaderScroll);
-    }
+    // Listen for scroll events
+    document.addEventListener("scroll", handleHeaderScroll);
+  }
 }
 // --- END OF NAVBAR LOGIC ---

@@ -142,34 +142,30 @@
       <i class="bi bi-whatsapp"></i>
     </a>
 
-    <script src="/js/include_partials.js"></script>
-
-    <script type="module">
-      import * as mainModule from "./js/main.js";
-
-      document.addEventListener("DOMContentLoaded", async () => {
-        try {
-          console.log('DOM Content Loaded, module script is running.');
-
-          // Load header and footer partials
-          await loadPartial('/partials/_header.html', 'header-placeholder');
-          await loadPartial('/partials/_footer.html', 'footer-placeholder');
-
-          // Initialize main.js functions after partials are loaded
-          mainModule.initPreloader();
-          mainModule.initScrollTop();
-          mainModule.initGlightbox();
-          mainModule.initAOS();
-          mainModule.initPureCounter();
-          mainModule.initCopyButtons();
-          mainModule.initIsotope();
-          mainModule.initMobileNavbar();
-
-        } catch (error) {
-          console.error('Error in module script:', error);
-          // Potentially display a user-friendly error message
-        }
-      });
-    </script>
-  </body>
+          <script type="module">
+            import * as mainModule from "./js/main.js";
+      
+            document.addEventListener("DOMContentLoaded", async () => {
+              try {
+                console.log('DOM Content Loaded, module script is running.');
+    
+                // Load header and footerpartials first
+                await mainModule.loadPartials();
+                
+                // Initialize main.js functions directly
+                mainModule.initPreloader();
+                mainModule.initScrollTop();
+                mainModule.initGlightbox();
+                mainModule.initAOS();
+                mainModule.initPureCounter();
+                mainModule.initCopyButtons();
+                mainModule.initIsotope();
+                mainModule.initMobileNavbar();
+      
+              } catch (error) {
+                console.error('Error in module script:', error);
+                // Potentially display a user-friendly error message
+              }
+            });
+          </script>  </body>
 </html>

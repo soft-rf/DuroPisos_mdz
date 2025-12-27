@@ -1,0 +1,16 @@
+// 1. Configuración (Necesaria para acceder a variables)
+@use "abstracts/variables";
+
+// 2. Layout Restante
+@use "layout/footer";
+
+// 3. Páginas
+@use "pages/home";
+@use "pages/projects";
+
+// 4. Componentes No Críticos
+@use "components/modals";
+@use "components/whatsapp";
+
+// Nota: 'base', 'header' y 'hero' ya están en critical.css,
+// no es necesario repetirlos aquí si cargas ambos archivos.

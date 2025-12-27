@@ -6,9 +6,7 @@ export default defineConfig({
   root: "src",
   publicDir: "../public",
   plugins: [
-    ssi({
-      remoteBasePath: "",
-    }),
+
   ],
   build: {
     outDir: "../dist",

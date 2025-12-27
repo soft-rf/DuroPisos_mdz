@@ -1,0 +1,184 @@
+/*--------------------------------------------------------------
+# Product Links in Get Started Section
+--------------------------------------------------------------*/
+.product-link {
+  color: var(--color-default);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.product-link:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.product-link i {
+  font-size: 14px;
+  margin-left: 5px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+.product-link:hover i {
+  transform: translateX(3px);
+}
+
+.modal-body ul {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+.modal-body ul li {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.modal-body p,
+.modal-body h6 {
+  font-size: 16px;
+}
+.carousel-item img {
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+}
+
+/*--------------------------------------------------------------
+# Product Detail Modal
+--------------------------------------------------------------*/
+.product-detail-modal {
+  padding: 30px;
+}
+.product-detail-modal .modal-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.product-detail-modal .modal-section-title:first-of-type {
+  margin-top: 0;
+}
+.product-detail-modal p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-default);
+  margin-bottom: 15px;
+}
+
+.product-detail-modal .icon-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.product-detail-modal .icon-list li {
+  font-size: 15px;
+  color: var(--color-default);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+.product-detail-modal .icon-list li i {
+  font-size: 18px;
+  color: var(--color-primary);
+  margin-right: 8px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.modal-footer .btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #212529;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.modal-footer .btn-warning:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}
+
+/*--------------------------------------------------------------
+# Product Detail Modal - Colors Grid
+--------------------------------------------------------------*/
+.product-detail-modal .colors-grid {
+  margin-top: 20px;
+}
+.product-detail-modal .color-item {
+  margin-bottom: 10px;
+}
+.product-detail-modal .color-swatch {
+  width: 100%;
+  height: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+.product-detail-modal .color-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+.product-detail-modal .color-code {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 2px;
+}
+.product-detail-modal .color-name {
+  font-size: 12px;
+  color: var(--color-default);
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+.product-detail-modal .color-swatch-img {
+  width: 100%;
+  height: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.product-detail-modal .color-swatch-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 400px) {
+  .product-detail-modal .color-swatch {
+    height: 50px;
+  }
+  .product-detail-modal .color-code {
+    font-size: 12px;
+  }
+  .product-detail-modal .color-name {
+    font-size: 11px;
+  }
+}
+
+/*--------------------------------------------------------------
+# FORCE MODAL VISIBILITY (Debugging Fix)
+--------------------------------------------------------------*/
+#selladoresProductModal.modal.fade,
+#faqModal.modal.fade {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
+}
+
+#selladoresProductModal.modal,
+#faqModal.modal {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#selladoresProductModal.modal .modal-dialog,
+#faqModal.modal .modal-dialog {
+  opacity: 1 !important;
+  transform: none !important;
+}

@@ -16,8 +16,6 @@
       rel="stylesheet"
     />
 
-
-
     <!-- Page-specific meta tags -->
     <title>Microcemento y Revestimientos en Mendoza | DURO PISOS SRL</title>
     <meta
@@ -28,6 +26,8 @@
       content="microcemento mendoza, revestimientos mendoza, pisos de microcemento, cemento alisado mendoza, aplicacion de microcemento, revoque color mendoza, endurecedores de hormigon, pisos industriales mendoza, duropisos"
       name="keywords"
     />
+
+    <!-- Los archivos CSS ahora se importan a través de `main.js` y son procesados por Vite -->
   </head>
   <body>
     <div id="header-placeholder"></div>
@@ -38,11 +38,14 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
-              <h1 data-aos="fade-down">Revestimientos Cementicios en Mendoza</h1>
+              <h1 data-aos="fade-down">
+                Revestimientos Cementicios en Mendoza
+              </h1>
               <p data-aos="fade-up">
                 Somos especialistas en revestimientos y terminaciones de paredes
                 y pisos.
-                <br />Ofrecemos fabricación, distribución y colocación en toda la región.
+                <br />Ofrecemos fabricación, distribución y colocación en toda
+                la región.
                 <br />
                 Explore nuestro catálogo.
               </p>
@@ -243,20 +246,17 @@
     <!-- Vendor JS Files -->
 
     <!-- Custom JS Files -->
-    <script src="/js/include_partials.js"></script>
-
     <script type="module">
       import * as mainModule from "./js/main.js";
 
       document.addEventListener("DOMContentLoaded", async () => {
         try {
-          console.log('DOM Content Loaded, module script is running.');
+          console.log("DOM Content Loaded, module script is running.");
 
-          // Load header and footer partials
-          await loadPartial('/partials/_header.html', 'header-placeholder');
-          await loadPartial('/partials/_footer.html', 'footer-placeholder');
+          // Load header and footerpartials first
+          await mainModule.loadPartials();
 
-          // Initialize main.js functions after partials are loaded
+          // Initialize main.js functions directly
           mainModule.initPreloader();
           mainModule.initScrollTop();
           mainModule.initGlightbox();
@@ -265,9 +265,8 @@
           mainModule.initCopyButtons();
           mainModule.initIsotope();
           mainModule.initMobileNavbar();
-
         } catch (error) {
-          console.error('Error in module script:', error);
+          console.error("Error in module script:", error);
           // Potentially display a user-friendly error message
         }
       });
