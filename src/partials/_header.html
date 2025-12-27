@@ -1,32 +1,32 @@
 <!-- ======= Header ======= -->
-<header id="header" class="header d-flex align-items-center">
+<header id="header" class="header d-flex align-items-center fixed-top">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "DURO PISOS SRL",
-      "image": "https://www.duropisosmendoza.com.ar/assets/img/LOGO.png",
+      "image": "https://www.duropisosmendoza.com.ar/assets/img/ConcretoLOG.svg",
       "@id": "https://www.duropisosmendoza.com.ar/",
       "url": "https://www.duropisosmendoza.com.ar/",
       "telephone": "+542615163895",
       "email": "ventas@duropisos.com.ar",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Av. Bandera de los Andes 7668",
-        "addressLocality": "Guaymallén",
+        "streetAddress": "Carril Nacional 7642",
+        "addressLocality": "Mendoza",
         "addressRegion": "Mendoza",
-        "postalCode": "M5523",
+        "postalCode": "M5521",
         "addressCountry": "AR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -32.9263,
-        "longitude": -68.7344
+        "latitude": -32.903869,
+        "longitude": -68.749916
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
+        "opens": "08:00",
         "closes": "18:00"
       },
       "sameAs": []
@@ -37,7 +37,7 @@
   >
     <a href="index.html" class="logo d-flex align-items-center">
       <img
-        src="/assets/img/LOGO.png"
+        src="/assets/img/ConcretoLOG.svg"
         alt="Duro Pisos S.R.L. Logo"
         style="height: 30px"
       />
@@ -66,5 +66,24 @@
     </nav>
     <!-- .navbar -->
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const header = document.getElementById("header");
+      const isIndex =
+        window.location.pathname === "/" ||
+        window.location.pathname.endsWith("index.html");
+
+      if (!isIndex) {
+        // En otras páginas: Fondo azul y espacio para no superponer
+        header.classList.add("header-scrolled");
+        document.body.style.paddingTop = "85px"; // Ajusta este valor si el header es más alto o bajo
+      } else {
+        // En Index: Fondo transparente
+        header.style.background = "transparent";
+        // Asegurar que se mantenga transparente al hacer scroll
+        header.classList.remove("header-scrolled");
+      }
+    });
+  </script>
 </header>
 <!-- End Header -->

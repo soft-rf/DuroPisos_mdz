@@ -1716,3 +1716,9 @@ body.subpage-nav-dark .header .logo h1 {
 body.subpage-nav-dark .header .logo h1 span {
   color: var(--color-primary); /* Keep accent color for span */
 }
+
+.clock-icon {
+  font-size: 1.2rem; /* Increase the size */
+  color: var(--color-primary); /* Change the color to red */
+  margin-right: 8px; /* Add some space to the right */
+}
