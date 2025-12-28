@@ -19,6 +19,18 @@
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+.whatsapp-float i {
+  font-family: "Bootstrap Icons" !important;
+}
+
+.whatsapp-float i::before {
+  content: "\f618" !important; /* Unicode for bi-whatsapp */
+}
+
+.whatsapp-float i::after {
+  content: none !important;
+}
+
 .whatsapp-float:hover {
   background-color: #1da851;
   transform: scale(1.1);
