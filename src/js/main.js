@@ -16,7 +16,7 @@ import "../styles/critical.scss";
 import "../styles/main.scss";
 
 // --- 2. IMPORTACIONES DE LIBRERÍAS (JS) ---
-import "bootstrap"; // Importa el JS de Bootstrap
+import * as bootstrap from "bootstrap"; // Importa el JS de Bootstrap
 import AOS from "aos";
 import GLightbox from "glightbox";
 import Isotope from "isotope-layout";
@@ -280,3 +280,35 @@ export function initMobileNavbar() {
   }
 }
 // --- END OF NAVBAR LOGIC ---
+
+/**
+ * Handles the video popup modal.
+ */
+export function initVideoModal() {
+  const videoModal = document.getElementById('videoModal');
+  const videoModalTrigger = document.getElementById('video-modal-trigger');
+
+  if (videoModal && videoModalTrigger) {
+    const modal = new bootstrap.Modal(videoModal);
+    const iframe = videoModal.querySelector('iframe');
+    const videoSrc = iframe.src; // Store the original src
+
+    videoModalTrigger.addEventListener('click', function (event) {
+      event.preventDefault();
+      // Start playing video when modal is shown
+      let autoplayUrl = videoSrc;
+      if (autoplayUrl.indexOf('?') > -1) {
+          autoplayUrl += '&autoplay=1';
+      } else {
+          autoplayUrl += '?autoplay=1';
+      }
+      iframe.src = autoplayUrl;
+      modal.show();
+    });
+
+    // Stop video when modal is hidden
+    videoModal.addEventListener('hidden.bs.modal', function () {
+      iframe.src = videoSrc;
+    });
+  }
+}

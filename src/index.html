@@ -195,7 +195,8 @@
             >
               <a
                 href="#"
-                class="advantage-item d-flex flex-column text-center advantage-clickable"
+                id="video-modal-trigger"
+                class="advantage-item d-flex flex-column text-center"
               >
                 <div class="icon">
                   <i class="bi bi-play-circle"></i>
@@ -209,8 +210,8 @@
               data-aos-delay="100"
             >
               <a
-                href="#"
-                class="advantage-item d-flex flex-column text-center advantage-clickable"
+                href="revoque-color.html#colores"
+                class="advantage-item d-flex flex-column text-center"
               >
                 <div class="icon">
                   <i class="bi bi-palette"></i>
@@ -222,6 +223,23 @@
         </div>
       </section>
     </main>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="videoModalLabel">Aplicación Profesional</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/U6NkpJ7G_JM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="footer-placeholder"></div>
 
@@ -266,6 +284,7 @@
           mainModule.initCopyButtons();
           mainModule.initIsotope();
           mainModule.initMobileNavbar();
+          mainModule.initVideoModal();
         } catch (error) {
           console.error("Error in module script:", error);
           // Potentially display a user-friendly error message
