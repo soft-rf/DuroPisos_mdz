@@ -46,21 +46,21 @@
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="./index.html">Inicio</a></li>
         <li class="dropdown">
           <a href="#"
             ><span>Productos</span>
             <i class="bi bi-chevron-down dropdown-indicator"></i
           ></a>
           <ul>
-            <li><a href="duro-crete.html">DURO CRETE - Endurecedores</a></li>
-            <li><a href="duro-fix.html">DURO FIX - Microcemento</a></li>
-            <li><a href="revoque-color.html">Revoque Color</a></li>
-            <li><a href="selladores.html">Selladores y Lacas</a></li>
+            <li><a href="./duro-crete.html">DURO CRETE - Endurecedores</a></li>
+            <li><a href="./duro-fix.html">DURO FIX - Microcemento</a></li>
+            <li><a href="./revoque-color.html">Revoque Color</a></li>
+            <li><a href="./selladores.html">Selladores y Lacas</a></li>
           </ul>
         </li>
-        <li><a href="proyectos.html">Proyectos</a></li>
-        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+        <li><a href="./proyectos.html">Proyectos</a></li>
+        <li><a href="./faq.html">Preguntas Frecuentes</a></li>
         <li><a href="#footer">Contacto</a></li>
       </ul>
     </nav>
@@ -83,6 +83,24 @@
         header.classList.add("header-scrolled");
         header.style.background = "";
       }
+
+      // Script para marcar automáticamente el enlace activo (color azul)
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll("#navbar a");
+
+      navLinks.forEach((link) => {
+        // Compara si el href del enlace coincide con la página actual
+        const href = link.getAttribute("href").replace("./", "");
+        if (
+          currentPath.endsWith(href) ||
+          (href === "index.html" && currentPath === "/")
+        ) {
+          link.classList.add("active");
+          // Si es un submenú, activar también el padre
+          const parent = link.closest(".dropdown");
+          if (parent) parent.querySelector("a").classList.add("active");
+        }
+      });
     })();
   </script>
 </header>
